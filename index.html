@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha - Your Personal AI Assistant</title>
+  <meta name="description" content="Meet Alpha, the personal AI assistant that helps you write, plan, research, and learn efficiently.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/tokyo-night-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%234285f4' d='M50 0 L61 35 L98 35 L68 57 L79 91 L50 70 L21 91 L32 57 L2 35 L39 35 Z'/></svg>">
+</head>
+<body>
+<div class="app-layout">
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="sidebar-item active" title="Home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </div>
+      <div class="sidebar-item" title="Discover">
+        <i class="fa-solid fa-compass"></i>
+        <span>Discover</span>
+      </div>
+      <div class="sidebar-item" title="Library">
+        <i class="fa-solid fa-bookmark"></i>
+        <span>Library</span>
+      </div>
+    </div>
+    
+    <div class="sidebar-history-section">
+      <p class="history-title">Recent Chats</p>
+      <div id="sidebarHistory">
+        <!-- History items will be injected here -->
+      </div>
+    </div>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-item" title="Upgrade">
+        <i class="fa-solid fa-bolt"></i>
+        <span>Upgrade</span>
+      </div>
+      <div class="sidebar-item" title="Settings">
+        <i class="fa-solid fa-gear"></i>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <section class="hero-container" id="heroSection">
+      <header class="alpha-logo-container">
+        <div class="alpha-star"></div>
+        <h1 class="hero-title">Meet Alpha, your personal AI assistant</h1>
+      </header>
+
+      <div class="chat-input-wrapper">
+        <div id="activeDocBadge" class="doc-badge" style="display: none;">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span id="activeDocName">Filename.pdf</span>
+          <button id="clearDocBtn" title="Unapprove document"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <input type="text" class="input-area" placeholder="Ask Alpha" id="mainInput">
+        <footer class="toolbar">
+          <div class="toolbar-left">
+            <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+            <button class="toolbar-btn" id="addBtn"><i class="fa-solid fa-plus"></i></button>
+            <button class="toolbar-btn tools-btn" id="toolsBtn">
+              <i class="fa-solid fa-screwdriver-wrench"></i> Tools
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <div class="model-selector" id="modelSelector">
+              <span>Fast</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <button class="toolbar-btn" id="micBtn"><i class="fa-solid fa-microphone"></i></button>
+          </div>
+        </footer>
+      </div>
+
+      <section class="chips-container">
+        <button class="chip" data-action="write">Write</button>
+        <button class="chip" data-action="plan">Plan</button>
+        <button class="chip" data-action="research">Research</button>
+        <button class="chip" data-action="learn">Learn</button>
+      </section>
+    </section>
+
+    <!-- Chat Response Area (Hidden Initially) -->
+    <section class="chat-thread" id="chatThread" style="display: none;">
+      <div class="chat-history" id="chatHistory"></div>
+      <!-- Fixed Bottom Input for Chat Mode -->
+      <div class="chat-input-sticky" id="stickyInputArea"></div>
+    </section>
+  </main>
+</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
